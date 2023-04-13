@@ -11,7 +11,7 @@ I have been instructed to make RESTful API routes for the following requirements
 The following is my to-do list for this project and how I have approached completing this take home assignment.
 
 [x] Write initial overview gameplan for project
-[ ] Set up repository and begin documentation / project board
+[x] Set up repository and begin documentation / project board
 [ ] Install necessary gems, create placeholder files for anticipated test subjects
 [ ] Design database and generate tables with relationships, factories.
 [ ] Write test for necessary requests and models.
