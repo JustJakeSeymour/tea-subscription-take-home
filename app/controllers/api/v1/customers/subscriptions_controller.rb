@@ -4,4 +4,11 @@ class Api::V1::Customers::SubscriptionsController < ApplicationController
 
     render json: customer_sub
   end
+
+  def update
+    customer_sub = CustomerSubscription.find(params[:id])
+    customer_sub.update(status: params[:status])
+
+    render json: customer_sub
+  end
 end
