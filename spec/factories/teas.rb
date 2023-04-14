@@ -4,5 +4,6 @@ FactoryBot.define do
     description { Faker::Lorem.sentence }
     temperature { 100 }
     brew_time { 4 }
+    association :subscription
   end
 end
