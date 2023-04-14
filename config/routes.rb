@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   # end
 
   post "/api/v1/customers/:id/subscriptions", to: 'api/v1/customers/subscriptions#create'
+  patch "/api/v1/customers/:id/subscriptions/:id", to: 'api/v1/customers/subscriptions#update'
   
 end
