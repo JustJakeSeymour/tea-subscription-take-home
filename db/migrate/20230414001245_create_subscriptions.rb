@@ -1,9 +1,9 @@
 class CreateSubscriptions < ActiveRecord::Migration[5.2]
   def change
     create_table :subscriptions do |t|
-      t.string :name
+      t.string :title
       t.float :price
-      t.boolean :active, default: true
+      t.integer :status, default: 0
 
       t.timestamps
     end

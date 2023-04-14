@@ -1,7 +1,8 @@
 FactoryBot.define do
   factory :subscription do
-    name { Faker::Tea.variety }
+    title { Faker::Tea.type }
     price { Faker::Number.within(range: 1.5, to: 5.0) }
-    active { true }
+    status { 0 }
+    frequency { 14 }
   end
 end
