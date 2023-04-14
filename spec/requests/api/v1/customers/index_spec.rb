@@ -18,5 +18,19 @@ RSpec.describe 'customer subscriptions' do
       expect(created_customer_sub.subscription_id).to eq(subscription.id)
       expect(created_customer_sub.status).to eq(0)
     end
+
+    it 'sends customer_subscription info back as json response' do
+
+      # post api_v1_customers_subscriptions_path(customer.id)
+      post "/api/v1/customers/#{customer.id}/subscriptions?subscription_id=#{subscription.id}"
+
+      expect(response).to be_successful
+
+      created_customer_sub = JSON.parse(response.body, symbolize_names: true)
+      expect(created_customer_sub[:customer_id]).to eq(customer.id)
+      expect(created_customer_sub[:subscription_id]).to eq(subscription.id)
+      expect(created_customer_sub[:status]).to eq(0)
+      expect(created_customer_sub[:id]).to eq(CustomerSubscription.last.id)
+    end
   end
 end
