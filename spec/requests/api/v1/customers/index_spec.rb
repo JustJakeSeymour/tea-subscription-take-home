@@ -7,7 +7,8 @@ RSpec.describe 'customer subscriptions' do
   context 'create customer_subscription' do
     it 'creates a customer_subscription from supplied request' do
 
-      post api_v1_customers_subscriptions_path(customer.id), headers: headers, params: { subscription_id: subscription.id }
+      # post api_v1_customers_subscriptions_path(customer.id)
+      post "/api/v1/customers/#{customer.id}/subscriptions?subscription_id=#{subscription.id}"
 
       expect(response).to be_successful
 
