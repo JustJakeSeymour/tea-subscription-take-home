@@ -12,8 +12,8 @@ The following is my to-do list for this project and how I have approached comple
 
 [x] Write initial overview gameplan for project
 [x] Set up repository and begin documentation / project board
-[ ] Install necessary gems, create placeholder files for anticipated test subjects
-[ ] Design database and generate tables with relationships, factories.
+[x] Install necessary gems, create placeholder files for anticipated test subjects
+[x] Design database and generate tables with relationships, factories.
 [ ] Write test for necessary requests and models.
 [ ] Build necessary routes and controller(s) per spec.
 
