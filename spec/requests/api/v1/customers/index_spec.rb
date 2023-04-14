@@ -44,10 +44,10 @@ RSpec.describe 'customer subscriptions' do
       expect(response).to be_successful
       
       customer_subscription.reload
-
+      
       expect(customer_subscription.status).to eq(1)
     end
-
+    
     it 'changes status from 0 to 1 (active to cancelled)' do
       customer_subscription = create(:customer_subscription, customer_id: customer.id, subscription_id: subscription.id)
       expect(customer_subscription.status).to eq(0)
@@ -57,8 +57,28 @@ RSpec.describe 'customer subscriptions' do
       expect(response).to be_successful
       
       customer_subscription_response = JSON.parse(response.body, symbolize_names: true)
-
+      
       expect(customer_subscription_response[:status]).to eq(1)
+    end
+  end
+  
+  context 'index returns all customer subscriptions' do
+    it 'returns customer subscriptions as array' do
+      customer2 = create(:customer)
+      3.times{create(:customer_subscription, customer_id: customer.id, subscription_id: subscription.id)}
+      create(:customer_subscription, customer_id: customer.id, subscription_id: subscription.id, status: 1)
+      create(:customer_subscription, customer_id: customer2.id, subscription_id: subscription.id)
+      
+      get "/api/v1/customers/#{customer.id}/subscriptions"
+      
+      expect(response).to be_successful
+      
+      customer_subscription_response = JSON.parse(response.body, symbolize_names: true)
+
+      expect(customer_subscription_response).to be_an(Array)
+      expect(customer_subscription_response.count).to eq(4)
+      expect(customer_subscription_response[0]).to be_a(Hash)
+      expect(customer_subscription_response[0][:customer_id]).to eq(customer.id)
     end
   end
 end

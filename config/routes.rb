@@ -10,5 +10,5 @@ Rails.application.routes.draw do
 
   post "/api/v1/customers/:id/subscriptions", to: 'api/v1/customers/subscriptions#create'
   patch "/api/v1/customers/:id/subscriptions/:id", to: 'api/v1/customers/subscriptions#update'
-  
+  get '/api/v1/customers/:id/subscriptions', to: 'api/v1/customers/subscriptions#index'
 end
